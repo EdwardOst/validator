@@ -1,0 +1,21 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <groupId>com.talend.se.platform</groupId>
+  <artifactId>demos</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+  <name>Talend SE ESB Demos</name>
+  <description>Talend ESB platform code based demos</description>
+  
+  <modules>
+    <module>demos-parent</module>
+  	<module>greeter-api</module>
+  	<module>greeter</module>
+  	<!-- module>greeter-comp</module  -->
+  	<!--  module>greeter-app</module  -->
+  	<!--  module>greeter-feature</module -->
+  	<module>data-validator</module>
+  </modules>
+</project>
