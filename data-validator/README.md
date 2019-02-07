@@ -4,6 +4,10 @@ data-validator
 utility wrapper service for spring expression language.
 
 
+### Running Lombok in Eclipse
+
+from <https://stackoverflow.com/questions/45461777/lombok-problems-with-eclipse-oxygen/46034044>
+
 My env: java version "1.8.0_144"
 
 Eclipse: Eclipse Java EE IDE for Web Developers. Version: Oxygen Release (4.7.0) Build id: 20170620-1800

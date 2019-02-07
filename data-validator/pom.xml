@@ -10,7 +10,7 @@
 	    <relativePath>../demos-parent/pom.xml</relativePath>
 	</parent>
 
-	<name>Data Validator</name>
+	<name>talend :: demos :: data-validator</name>
 	<description>Data validation framework using Spring Expression Language</description>
 
 	<dependencies>
@@ -21,7 +21,7 @@
 		<dependency>
 			<groupId>joda-time</groupId>
 			<artifactId>joda-time</artifactId>
-			<!--  scope>test</scope -->
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 
@@ -31,21 +31,8 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 			</plugin>
 			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>exec-maven-plugin</artifactId>
-				<executions>
-					<execution>
-						<goals>
-							<goal>java</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<mainClass>com.talend.se.platform.demos.datavalidator.Main</mainClass>
-					<arguments>
-						<argument>lastname + ', ' + firstname</argument>
-					</arguments>
-				</configuration>
+				<version>1.6.0</version>
 			</plugin>
 		</plugins>
 	</build>	

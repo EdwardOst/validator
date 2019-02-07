@@ -6,8 +6,8 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
 
-  <name>Talend SE ESB Demos</name>
-  <description>Talend ESB platform code based demos</description>
+  <name>talend :: demos</name>
+  <description>Talend platform code based demos</description>
   
   <modules>
     <module>demos-parent</module>

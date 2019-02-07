@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>C:\Users\eost\OneDrive - Talend\demos\data-validator\.README.md.html</title>
+<title>C:\Users\eost\Documents\se\demo\validator\data-validator\.README.md.html</title>
 
 
 <style type="text/css">
@@ -640,6 +640,18 @@ function setDocumentScrollTop(ypos)
 </head>
 <body class="markdown-body">
 <h1> <a id="data-validator" class="anchor" href="#data-validator" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>data-validator</h1> 
-<p>utility wrapper service for spring expression language.</p>
+<p>utility wrapper service for spring expression language.</p> 
+<h3> <a id="running-lombok-in-eclipse" class="anchor" href="#running-lombok-in-eclipse" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Running Lombok in Eclipse</h3> 
+<p>from <a href="https://stackoverflow.com/questions/45461777/lombok-problems-with-eclipse-oxygen/46034044" rel="nofollow">https://stackoverflow.com/questions/45461777/lombok-problems-with-eclipse-oxygen/46034044</a></p> 
+<p>My env: java version &quot;1.8.0_144&quot;</p> 
+<p>Eclipse: Eclipse Java EE IDE for Web Developers. Version: Oxygen Release (4.7.0) Build id: 20170620-1800</p> 
+<p>Exit Eclipse(if it is open) and downloaded jar from <a href="https://projectlombok.org/download" rel="nofollow">https://projectlombok.org/download</a></p> 
+<p>execute command: java -jar lombok.jar</p> 
+<p>This command will open window as shown here <a href="https://projectlombok.org/setup/eclipse" rel="nofollow">https://projectlombok.org/setup/eclipse</a>, install and quit the installer.</p> 
+<p>Add jar to build path/add it to pom.xml.</p> 
+<p>restart eclipse.</p> 
+<p>Go to Eclipse --&gt; About Eclipse --&gt; check 'Lombok v1.16.18 &quot;Dancing Elephant&quot; is installed. <a href="https://projectlombok.org/" rel="nofollow">https://projectlombok.org/</a>' That's it. It worked. I did not change eclipse init script.</p> 
+<p>Note: Read the note in following image regarding -vm options If you start Eclipse with a custom -vm parameter, you'll need to add:</p> 
+<p>-vmargs -javaagent:/lombok.jar</p>
 </body>
 </html>
