@@ -11,11 +11,6 @@
   
   <modules>
     <module>demos-parent</module>
-  	<module>greeter-api</module>
-  	<module>greeter</module>
-  	<!-- module>greeter-comp</module  -->
-  	<!--  module>greeter-app</module  -->
-  	<!--  module>greeter-feature</module -->
   	<module>data-validator</module>
   </modules>
 </project>

@@ -3,7 +3,7 @@ package com.talend.se.platform.demos.datavalidator;
 import lombok.Data;
 import org.joda.time.LocalDate;
 
-@Data
+//@Data
 public class Customer {
 	
 	private final String lastname;
