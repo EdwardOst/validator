@@ -1,6 +1,6 @@
 package com.talend.se.platform.demos.datavalidator;
 
-public class DataValidatorFunctions {
+public abstract class DataValidatorFunctions {
 
 	// These methods are registered in the eval context and therefore accessible through function calls
 	// in validation expressions

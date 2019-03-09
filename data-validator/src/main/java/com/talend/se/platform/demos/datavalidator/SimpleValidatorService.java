@@ -46,7 +46,7 @@ public class SimpleValidatorService {
 	private String buildExpression() {
 		StringJoiner sj = new StringJoiner(",", "{", "}");
 		for (String exprName : rules.keySet()) {
-			sj.add(exprName + ":" + rules.get(exprName));
+			sj.add( exprName + ":" + rules.get(exprName));
 		}
 		return sj.toString();		
 	}
@@ -57,8 +57,10 @@ public class SimpleValidatorService {
 	 */
 	protected void functions() {
 		try {
-			// TODO: use Java 8 function references
-//			evalContext.registerFunction("reverseString", StringUtils.class.getDeclaredMethod("reverseString", String.class));
+			evalContext.registerFunction("reverseString", DataValidatorFunctions.class.getDeclaredMethod("reverseString", String.class));
+			evalContext.registerFunction("isEven", DataValidatorFunctions.class.getDeclaredMethod("isEven", int.class));
+			evalContext.registerFunction("reverseInt", DataValidatorFunctions.class.getDeclaredMethod("reverseInt", int.class, int.class, int.class));
+			evalContext.registerFunction("varargsFunctionReverseStringsAndMerge", DataValidatorFunctions.class.getDeclaredMethod("varargsFunctionReverseStringsAndMerge", String[].class));
 		}
 		catch (Exception ex) {
 			throw new IllegalStateException(ex);
