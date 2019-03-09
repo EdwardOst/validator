@@ -10,12 +10,11 @@ import org.joda.time.LocalDate;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.springframework.expression.spel.ExpressionState;
 import org.springframework.expression.spel.SpelNode;
-import org.springframework.expression.spel.ast.Indexer;
-import org.springframework.expression.spel.ast.SpelNodeImpl;
+import org.springframework.expression.spel.ast.PropertyOrFieldReference;
 import org.springframework.expression.spel.standard.SpelExpression;
 import org.springframework.expression.spel.support.StandardEvaluationContext;
-import org.springframework.expression.spel.ast.Indexer;
 
 public class SimpleValidatorServiceTest {
 
@@ -35,12 +34,14 @@ public class SimpleValidatorServiceTest {
 
 	private static Map<String, String>  defaultRules() {
 		Map<String, String> expressions = new TreeMap<>();
-		expressions.put("fullname", "lastname + ', ' + #reverseString(firstname)");
+		expressions.put("'fullname'", "lastname + ', ' + #reverseString(firstname)");
+		// note that because of the context, the key value of "age" is not resolved against the pojo whereas the
+		// value of "age" is resolved because the age property is known to be an integer
 		expressions.put("age", "age");
-		expressions.put("date_of_birth", "dob");
-		expressions.put("address", "address.street1 + ', ' + address.city");
-		expressions.put("youth_demographic", "dob.isAfter(new org.joda.time.LocalDate(1970, 1, 1))");
-		expressions.put("carrousel", "age > #max_age");
+		expressions.put("'date_of_birth'", "dob");
+		expressions.put("'address'", "address.street1 + ', ' + address.city");
+		expressions.put("'youth_demographic'", "dob.isAfter(new org.joda.time.LocalDate(1970, 1, 1))");
+		expressions.put("'carrousel'", "age > #max_age");
 		return expressions;
 	}
 	
@@ -73,22 +74,19 @@ public class SimpleValidatorServiceTest {
 	public void testGetTerms() {
 		System.out.println("testGetTerms");
 		SpelExpression expr = (SpelExpression) validator.getExpr();
-		getTerms(0, expr.getAST());
-//		SpelNode spelNode = expr.getAST();
-//		System.out.printf("%s\n", spelNode.toStringAST());
-//		for ( int childIndex=0; childIndex < spelNode.getChildCount(); childIndex += 1 ) {
-//			SpelNode child = spelNode.getChild(childIndex);
-//			System.out.printf("%d: %s: %s\n", childIndex, child.getClass().getName(), child.toStringAST());
-//		}
+		getTerms(0, expr.getAST(), new ExpressionState(validator.getEvalContext()));
 		System.out.printf("----------------\n");
 	}
 
-	public void getTerms(int level, SpelNode spelNode) {
+	public void getTerms(int level, SpelNode spelNode, ExpressionState expressionState) {
 		String pad = new String(new char[2*level]).replace("\0", " ");
-		System.out.printf("%s%s: %s\n", pad, spelNode.getClass().getName(), spelNode.toStringAST());
+		if (spelNode instanceof PropertyOrFieldReference) {
+			boolean isWritable = spelNode.isWritable(expressionState);
+			System.out.printf("%s%s: %s: %s\n", pad, spelNode.getClass().getName(), isWritable, spelNode.toStringAST());
+		}
 		for ( int childIndex=0; childIndex < spelNode.getChildCount(); childIndex += 1 ) {
 			SpelNode child = spelNode.getChild(childIndex);
-			getTerms(level + 1, child);
+			getTerms(level + 1, child, expressionState);
 		}
 	}
 

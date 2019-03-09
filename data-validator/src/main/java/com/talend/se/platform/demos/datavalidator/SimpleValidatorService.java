@@ -48,6 +48,7 @@ public class SimpleValidatorService {
 		for (String exprName : rules.keySet()) {
 			sj.add( exprName + ":" + rules.get(exprName));
 		}
+		System.out.println("*** " + sj.toString() + " ***");
 		return sj.toString();		
 	}
 	
