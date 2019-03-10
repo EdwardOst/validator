@@ -74,19 +74,18 @@ public class SimpleValidatorServiceTest {
 	public void testGetTerms() {
 		System.out.println("testGetTerms");
 		SpelExpression expr = (SpelExpression) validator.getExpr();
-		getTerms(0, expr.getAST(), new ExpressionState(validator.getEvalContext()));
+		getTerms(0, expr.getAST());
 		System.out.printf("----------------\n");
 	}
 
-	public void getTerms(int level, SpelNode spelNode, ExpressionState expressionState) {
+	public void getTerms(int level, SpelNode spelNode) {
 		String pad = new String(new char[2*level]).replace("\0", " ");
 		if (spelNode instanceof PropertyOrFieldReference) {
-			boolean isWritable = spelNode.isWritable(expressionState);
-			System.out.printf("%s%s: %s: %s\n", pad, spelNode.getClass().getName(), isWritable, spelNode.toStringAST());
+			System.out.printf("%d:%s%s: %s\n", level, pad, spelNode.getClass().getName(), spelNode.toStringAST());
 		}
 		for ( int childIndex=0; childIndex < spelNode.getChildCount(); childIndex += 1 ) {
 			SpelNode child = spelNode.getChild(childIndex);
-			getTerms(level + 1, child, expressionState);
+			getTerms(level + 1, child);
 		}
 	}
 
